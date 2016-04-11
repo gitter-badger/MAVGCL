@@ -1,6 +1,5 @@
 package com.comino.flight.control.integration;
 
-import com.comino.mav.control.IMAVController;
 import com.comino.mq.bus.IMWMessageBusListener;
 import com.comino.mq.bus.MWMessageBus;
 import com.comino.mq.tests.OptPos;
@@ -35,17 +34,5 @@ public class SlamTest {
 	}
 
 
-	public void registerFunction(IMAVController control) {
-
-
-
-		control.getCollector().addInjectionListener(model -> {
-
-			model.debug.x = (float)pos.x;
-			model.debug.y = (float)pos.z;
-			model.debug.z = (float)pos.y;
-		});
-
-	}
 
 }
