@@ -41,6 +41,7 @@ import org.mavlink.messages.lquac.msg_rc_channels_override;
 
 import com.comino.flight.control.ControlProperties;
 import com.comino.flight.control.integration.AnalysisIntegration;
+import com.comino.flight.control.integration.SlamTest;
 import com.comino.flight.panel.control.FlightControlPanel;
 import com.comino.flight.tabs.FlightTabs;
 import com.comino.flight.widgets.statusline.StatusLineWidget;
@@ -126,7 +127,8 @@ public class MainApp extends Application {
 			}
 		}
 
-		AnalysisIntegration.registerFunction(control);
+		SlamTest slam = new SlamTest();
+		slam.registerFunction(control);
 		MSPLogger.getInstance(control);
 		ControlProperties.getInstance(control);
 
