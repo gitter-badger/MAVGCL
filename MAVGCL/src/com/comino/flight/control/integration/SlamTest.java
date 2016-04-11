@@ -4,12 +4,17 @@ import com.comino.mav.control.IMAVController;
 import com.comino.mq.bus.IMWMessageBusListener;
 import com.comino.mq.bus.MWMessageBus;
 import com.comino.mq.tests.OptPos;
+import com.comino.msp.model.DataModel;
 
 public class SlamTest {
 
 	private OptPos pos = null;
+	private long tms=0;
+	private DataModel model = null;
 
-	public SlamTest() {
+	public SlamTest(DataModel model) {
+
+		this.model = model;
 
 		MWMessageBus bus1 = new MWMessageBus(1,"127.0.0.1");
 
@@ -19,6 +24,11 @@ public class SlamTest {
 			public void received(Object o) {
 
 				pos = (OptPos)o;
+				System.out.println(System.currentTimeMillis()-tms);
+				tms = System.currentTimeMillis();
+				model.debug.x = (float)pos.x;
+				model.debug.y = (float)pos.z;
+				model.debug.z = (float)pos.y;
 
 			}
 		}, OptPos.class);
@@ -27,12 +37,13 @@ public class SlamTest {
 
 	public void registerFunction(IMAVController control) {
 
-		/*  EXAMPLE for Debugging values */
+
 
 		control.getCollector().addInjectionListener(model -> {
+
 			model.debug.x = (float)pos.x;
-			model.debug.y = (float)pos.y;
-			model.debug.z = (float)pos.z;
+			model.debug.y = (float)pos.z;
+			model.debug.z = (float)pos.y;
 		});
 
 	}
