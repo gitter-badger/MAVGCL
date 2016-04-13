@@ -39,7 +39,7 @@ import java.util.Map;
 import org.mavlink.messages.MAV_CMD;
 import org.mavlink.messages.lquac.msg_rc_channels_override;
 
-import com.comino.flight.control.ControlProperties;
+import com.comino.flight.control.ObservableControlProperties;
 import com.comino.flight.control.integration.SlamTest;
 import com.comino.flight.panel.control.FlightControlPanel;
 import com.comino.flight.tabs.FlightTabs;
@@ -129,7 +129,7 @@ public class MainApp extends Application {
 		SlamTest slam = new SlamTest(control.getCurrentModel());
 
 		MSPLogger.getInstance(control);
-		ControlProperties.getInstance(control);
+		ObservableControlProperties.getInstance(control);
 
 		FileHandler.getInstance(primaryStage,control);
 

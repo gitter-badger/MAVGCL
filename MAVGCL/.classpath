@@ -11,5 +11,8 @@
 	<classpathentry kind="lib" path="lib/gson-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/jfxchartext-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/medusa-4.7.jar"/>
+	<classpathentry kind="lib" path="lib/mavmq.jar"/>
+	<classpathentry kind="lib" path="lib/fastcast-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/fst-2.42-onejar.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
